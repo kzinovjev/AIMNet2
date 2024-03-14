@@ -1,7 +1,9 @@
 
 # AIMNet2: a general-purpose neural network potential for organic and element-organic molecules.
 
-The repository contains AIMNet2 models, example Python code and supplementary data for the manuscript
+The repository contains AIMNet2 ensemble models only and a convince method to load the models via python, see the original
+[repository](https://github.com/isayevlab/AIMNet2) for all models.
+
 
 **AIMNet2: A Neural Network Potential to Meet your Neutral, Charged, Organic, and Elemental-Organic Needs**
 *Dylan Anstine ,Roman Zubatyuk ,Olexandr Isayev*
@@ -14,7 +16,7 @@ The models are applicable for systems containing the following set of chemical e
   
 The models are in the form of JIT-compiled PyTorch-2.0 files and could be loaded in Python or C++ code.
 
-Note, that at present models have O(N^2) compute and memory complexity w.r.t. number of atoms. They could be applied to systems up to a few 100's of atoms. Linear scaling models, with the same parametrization, will be released soon.
+Note, that at present models have O(N^2) compute and memory complexity w.r.t. number of atoms. They could be applied to systems up to a few 100's of atoms.
 
 In Python, the models could be loaded with the `torch.jit.load` function. As an input, they accept single argument of type `Dict[str, Tensor]` with the following data:
 ```
