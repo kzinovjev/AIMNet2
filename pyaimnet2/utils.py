@@ -4,12 +4,13 @@ available_models = ["b973c", "wb97m-d3"]
 MODELS = Literal["b973c", "wb97m-d3"]
 
 
-def load_model(model_name: MODELS):
+def load_model(model_name: MODELS, device: str = "cpu"):
     """
     Load the specified AIMNET2 model.
 
     Args:
         model_name: The name of the ensemble model which should be loaded (`b973c`, `wb97m-d3`).
+        device: The name of the device the model should be loaded to.
 
     Returns:
         A aimnet2 model ready for evaluation.
@@ -25,4 +26,4 @@ def load_model(model_name: MODELS):
 
     package_path: pathlib.Path = files("pyaimnet2")
     model_path = package_path.joinpath("models", f"aimnet2_{model_name}_ens.jpt")
-    return torch.jit.load(model_path.as_posix())
+    return torch.jit.load(model_path.as_posix(), map_location=device)
